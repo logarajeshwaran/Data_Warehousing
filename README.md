@@ -113,17 +113,17 @@ Below are sample output images and visualizations generated from the Star Schema
 
 ![Slack Notification](screenshots/slack_notofication_star_schema.png)
 
-### Slack Notification  
+### Dimension City Table
 
 ![Dim City](screenshots/dim_city_star_schema.png)
 
 
-### Slack Notification  
+### Dimension Date Table
 
 ![Dim Date](screenshots/dim_date_star_schema.png)
 
 
-### Slack Notification  
+### Fact Weather Table
 
 ![Fact Weather](screenshots/fact_weather_star_schema.png)
 
