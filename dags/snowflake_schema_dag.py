@@ -85,14 +85,20 @@ def load_data_to_mysql(**kwargs):
     cursor.execute(DIM_COUNTRY)
     cursor.execute(DIM_SHOW)
     for country in country_data:
-        print("country", country)
-        cursor.execute("INSERT INTO dim_country (country_name) VALUES (%s)", (country['country_name'],))
-        conn.commit()
+        try:
+            cursor.execute("INSERT INTO dim_country (country_name) VALUES (%s)", (country['country_name'],))
+            conn.commit()
+        except Exception as e:
+            print(f"Error inserting country: {e}")
+            conn.rollback()
 
     for show in show_data:
-        print("show", show)
-        cursor.execute("INSERT INTO dim_show (tvmaze_id, name) VALUES (%s, %s)", (show['tvmaze_id'], show['show_name']))
-        conn.commit()
+        try:
+            cursor.execute("INSERT INTO dim_show (tvmaze_id, name) VALUES (%s, %s)", (show['tvmaze_id'], show['show_name']))
+            conn.commit()
+        except Exception as e:
+            print(f"Error inserting country: {e}")
+            conn.rollback()
 
     print(f"Inserted {cursor.rowcount} rows into dim_show and dim_country tables.")
     cursor.close()
